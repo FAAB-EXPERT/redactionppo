@@ -1,0 +1,6 @@
+{
+  "name": "FAAB PPO - Gestion Axée sur les Résultats",
+  "description": "Système Opérationnel PPO & GAR - Plateforme intégrée de Planification des Projets par Objectifs, Analyse Stratégique et Gestion Axée sur les Résultats.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
