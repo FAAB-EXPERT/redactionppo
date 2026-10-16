@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/PPO/',
+    base: '/redactionppo/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
