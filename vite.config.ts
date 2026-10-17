@@ -3,10 +3,25 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+const htmlHybridPlugin = () => ({
+  name: 'html-hybrid-plugin',
+  transformIndexHtml: {
+    order: 'pre' as const,
+    handler(html: string) {
+      return html
+        .replace(/<link rel="stylesheet" href="\.\/bundle\/app\.css"[^>]*>/g, '')
+        .replace(
+          /<script type="module" src="\.\/bundle\/app\.js"[^>]*><\/script>/g,
+          '<script type="module" src="/src/main.tsx"></script>'
+        );
+    },
+  },
+});
+
+export default defineConfig(({command}) => {
   return {
-    base: '/redactionppo/',
-    plugins: [react(), tailwindcss()],
+    base: command === 'build' ? './' : '/',
+    plugins: [htmlHybridPlugin(), react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
